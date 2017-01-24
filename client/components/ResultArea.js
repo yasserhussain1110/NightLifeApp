@@ -8,9 +8,10 @@ const ResultArea = ({yelpSearchResult}) => {
     </ul>;
   }
 
+
   return (
-    <ul className="bar-list">{yelpSearchResult.map(bar =>
-      <li className="bar clearfix">
+    <ul className="bar-list">{yelpSearchResult.map((bar) =>
+      <li key={bar.url} className="bar clearfix">
         <img src={bar.image_url} />
         <a className="bar-name" href={bar.url}>{bar.name}</a>
         <a className="number-goers">0 GOING</a>

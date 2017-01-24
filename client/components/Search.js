@@ -33,7 +33,8 @@ class Search extends Component {
 
 const SearchDiv = ({value, updateSearchTerm, onSubmitForm}) => {
   return <div className="search">
-    <input className="search-input" onChange={updateSearchTerm} placeholder="WHERE YOU AT, BABY?" value={value}/>
+    <input className="search-input" onChange={updateSearchTerm}
+           placeholder="WHERE YOU AT?" value={value}/>
     <button onClick={onSubmitForm}>GO</button>
   </div>
 };

@@ -13,12 +13,15 @@ const common = {
 // Entry accepts a path or an object of entries.
 // We'll be using the latter form given it's
 // convenient with more complex configurations.
-  entry: {
-    app: PATHS.client
-  },
+  entry: [
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client',
+    PATHS.client
+  ],
   output: {
-    path: PATHS.build,
-    filename: '[name].js'
+    path: "/",
+    publicPath: '/',
+    filename: 'app.js'
   },
   plugins: [new HtmlWebpackPlugin({
     title: 'NightLife App',
@@ -28,24 +31,13 @@ const common = {
 };
 
 
-var config;
-// Detect how npm is run and branch based on that
-switch (process.env.npm_lifecycle_event) {
-  case 'build':
-    config = merge(common,
-      parts.setupCSS(PATHS.app),
-      parts.setupBabel());
-    break;
-  default:
-    config = merge(
-      common,
-      parts.setupCSS(PATHS.app),
-      parts.setupBabel(),
-      parts.devServer({
-// Customize host/port here if needed
-        host: process.env.HOST,
-        port: process.env.PORT
-      })
-    );
-}
+var config = merge(common,
+  parts.setupCSS(PATHS.client),
+  parts.setupBabel(),
+  parts.devServer({
+    // Customize host/port here if needed
+    host: process.env.HOST,
+    port: process.env.PORT
+  }));
+
 module.exports = validate(config);

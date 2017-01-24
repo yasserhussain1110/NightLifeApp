@@ -35,7 +35,7 @@ class App extends Component {
 }
 
 /*
-<div id="#app">
+<div id="#client">
         <Header/>
         <SearchBar/>
         <ResultArea/>
