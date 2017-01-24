@@ -85,6 +85,7 @@ ul {
 }
 
 .bar {
+  display: flex;
   width: 1050px;
   margin: 10px auto;
   text-align: left;
@@ -101,13 +102,9 @@ ul {
   border-radius: 5px;
 }
 
-.bar > * {
-  float: left;
-}
-
 .snippet {
-  font-size: 0.9em;
-  margin: 5px 10px;
+  font-size: 0.85em;
+  margin: 20px 10px 5px 10px;
 }
 
 .bar-name {
@@ -132,13 +129,4 @@ ul {
 
 img {
   border-radius: 5px;
-}
-
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: " ";
-  clear: both;
-  height: 0;
 }

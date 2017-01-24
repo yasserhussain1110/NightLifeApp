@@ -1,21 +1,21 @@
 import React from 'react';
 
-const ResultArea = ({yelpSearchResult}) => {
+const ResultArea = ({bars}) => {
 
-  if (yelpSearchResult.length == 0) {
-    return <ul>
-      <li></li>
-    </ul>;
+  if (bars.length == 0) {
+    return <ul></ul>;
   }
 
 
   return (
-    <ul className="bar-list">{yelpSearchResult.map((bar) =>
-      <li key={bar.url} className="bar clearfix">
+    <ul className="bar-list">{bars.map((bar, index) =>
+      <li key={index} className="bar">
         <img src={bar.image_url} />
-        <a className="bar-name" href={bar.url}>{bar.name}</a>
-        <a className="number-goers">0 GOING</a>
-        <p><i className="snippet">"{bar.snippet_text}"</i></p>
+        <div className="bar-info">
+          <a className="bar-name" href={bar.url}>{bar.name}</a>
+          <a className="number-goers">0 GOING</a>
+          <p className="snippet"><i>"{bar.snippet_text}"</i></p>
+        </div>
       </li>)}
     </ul>
   );

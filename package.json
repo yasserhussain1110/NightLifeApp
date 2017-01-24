@@ -39,9 +39,11 @@
     "webpack-validator": "^2.2.9"
   },
   "dependencies": {
+    "body-parser": "^1.16.0",
     "dotenv": "^4.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "superagent": "^3.3.2",
     "yelp": "^1.0.2"
   }
 }
