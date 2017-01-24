@@ -8,19 +8,17 @@ var yelp = new Yelp({
   token_secret: 'qvGmbeADlTMmiuevP86I6mWp5to',
 });
 
+function requestYelp(location, success, failure) {
+  yelp.search({category_filter: 'bars', location: location})
+    .then(function (data) {
+      var bars = data.businesses;
+      success(bars);
+    })
+    .catch(function (err) {
+      failure(err);
+    });
+}
+
 // See http://www.yelp.com/developers/documentation/v2/search_api
-yelp.search({ category_filter:'nightlife', location: 'Montreal' })
-.then(function (data) {
-  var outcome = data.businesses.map(function(business) {
-    return {
-      name: business.name,
-      image_url: business.image_url,
-      snippet_text: business.snippet_text,
-      url: business.url
-    }
-  });
-  console.log(JSON.stringify(outcome));
-})
-.catch(function (err) {
-  console.error(err);
-});
+
+module.exports = requestYelp;

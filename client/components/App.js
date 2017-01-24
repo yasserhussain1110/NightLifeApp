@@ -3,7 +3,6 @@ import Header from './Header';
 import Search from './Search';
 import ResultArea from './ResultArea';
 import request from 'superagent';
-import apiData from '../test/init_data';
 
 
 class App extends Component {
@@ -11,16 +10,16 @@ class App extends Component {
     super(props);
 
     this.state = {
-      bars: apiData
+      bars: []
     };
 
     this.kickOffSearch = this.kickOffSearch.bind(this);
   }
 
-  kickOffSearch(searchTerm) {
+  kickOffSearch(location) {
     var _this = this;
-    makeApiRequest('/api/searchBars', {term: searchTerm},
-      res => _this.setState({bars: res.bars}),
+    makeApiRequest('/api/searchBars', {location: location},
+      bars => _this.setState({bars}),
       errors => console.log(errors)
     );
   }
@@ -41,23 +40,20 @@ export default App;
 
 const logError = err => console.log(err);
 
-const makeApiRequest = (url, data, apiSuccessCallback, apiFailureCallBack, generalErrorCallback = logError) => {
+const makeApiRequest = (url, data, apiSuccessCallback, apiFailureCallBack) => {
   request
     .post(url)
     .type('form')
     .send(data)
     .set('Accept', 'application/json')
     .end(function (err, res) {
+      var apiRes = res.body;
+
       if (err) {
-        generalErrorCallback(err);
+        apiFailureCallBack(apiRes.errors);
         return;
       }
 
-
-      if (res.errors) {
-        apiFailureCallBack(res.errors);
-      } else {
-        apiSuccessCallback(res);
-      }
+      apiSuccessCallback(apiRes.bars);
     });
 };

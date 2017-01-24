@@ -1,6 +1,6 @@
 function validate(form) {
   errors = [];
-  if (!form.term || !form.term.trim()) {
+  if (!form.location || !form.location.trim()) {
     errors.push('Search Term cannot be empty');
   }
 

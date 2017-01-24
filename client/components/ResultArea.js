@@ -8,8 +8,8 @@ const ResultArea = ({bars}) => {
 
 
   return (
-    <ul className="bar-list">{bars.map((bar, index) =>
-      <li key={index} className="bar">
+    <ul className="bar-list">{bars.map(bar =>
+      <li key={bar.id} className="bar">
         <img src={bar.image_url} />
         <div className="bar-info">
           <a className="bar-name" href={bar.url}>{bar.name}</a>
