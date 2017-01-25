@@ -18,6 +18,12 @@ app.use(bodyParser.urlencoded({
 
 app.post('/api/searchBars', SearchBars.post);
 
+app.post('/lastSearchedLocation', function(req, res) {
+  res.json({
+    location: "Calcutta"
+  });
+});
+
 app.listen(process.env.PORT || 8080);
 
 

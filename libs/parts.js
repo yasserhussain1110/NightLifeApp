@@ -46,7 +46,7 @@ exports.setupBabel = function () {
         {
           test: /\.js$/,
           exclude: /(node_modules|bower_components)/,
-          loaders: ['react-hot', 'babel']
+          loader: 'babel'
         }
       ]
     }

@@ -5,6 +5,16 @@ $primary-color: #6D3D97;
   padding: 0;
 }
 
+@keyframes cssAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 body {
   background-color: $primary-color;
   text-align: center;
@@ -94,11 +104,11 @@ ul {
 }
 
 .bar:hover {
-  border-top: 1px solid rgba(255,255,255,.3);
-  border-bottom: 1px solid rgba(0,0,0,0);
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
   padding-top: 9px;
   padding-bottom: 9px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .4);
   border-radius: 5px;
 }
 
@@ -129,4 +139,15 @@ ul {
 
 img {
   border-radius: 5px;
+}
+
+.spinner {
+  color: white;
+  font-size: 4em;
+  animation: cssAnimation 3.5s linear infinite;
+  margin-top: 20px;
+}
+
+.spinner i {
+  margin: 0;
 }
