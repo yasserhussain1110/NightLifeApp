@@ -25,22 +25,22 @@ module.exports = {
   }
 };
 
-function insertUserIfNotAlreadyGoing(bar, barsCollection, userId) {
+function insertOrRemoveUser(bar, barsCollection, userId) {
   let goers = bar.goers;
-  if (goers.indexOf(userId) === -1) {
-    let newGoersList = [...goers, userId];
-    let newNumberOfGoers = newGoersList.length;
-    barsCollection.update(
-      {id: bar.id},
-      {
-        $set: {
-          goers: newGoersList
-        }
-      });
-    return newNumberOfGoers;
-  } else {
-    return goers.length;
-  }
+  let userIndex = goers.indexOf(userId);
+
+  let newGoersList = (userIndex === -1) ? [...goers, userId]
+    : [...goers.slice(0, userIndex), ...goers.slice(userIndex + 1)];
+
+  barsCollection.update(
+    {id: bar.id},
+    {
+      $set: {
+        goers: newGoersList
+      }
+    });
+
+  return newGoersList.length;
 }
 
 function indicateGoing(res, barId, userId) {
@@ -55,7 +55,7 @@ function indicateGoing(res, barId, userId) {
         return;
       }
       let bar = results[0];
-      let newNumberOfGoers = insertUserIfNotAlreadyGoing(bar, barsCollection, userId);
+      let newNumberOfGoers = insertOrRemoveUser(bar, barsCollection, userId);
       sendNewNumberOfGoers(res, newNumberOfGoers);
       db.close();
     });

@@ -17,6 +17,7 @@ class Search extends Component {
 
     this.updateSearchTerm = this.updateSearchTerm.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
+    this.onPressEnter = this.onPressEnter.bind(this);
 
     this.getLastSearchedLocation();
   }
@@ -24,7 +25,10 @@ class Search extends Component {
   getLastSearchedLocation() {
     var _this = this;
     asyncPost('/lastSearchedLocation', {},
-      res => _this.props.actions.gotLastSearchedLocation(res.location),
+      res => {
+        _this.props.actions.gotLastSearchedLocation(res.location);
+        _this.onSubmitForm();
+      },
       res => console.log(res.errors)
     );
   }
@@ -51,6 +55,12 @@ class Search extends Component {
     );
   }
 
+  onPressEnter(e) {
+    if (e.key === 'Enter') {
+      this.onSubmitForm();
+    }
+  }
+
   updateSearchTerm(e) {
     this.setState({location: e.target.value});
   }
@@ -61,6 +71,7 @@ class Search extends Component {
         value={this.state.location}
         updateSearchTerm={this.updateSearchTerm}
         onSubmitForm={this.onSubmitForm}
+        onPressEnter={this.onPressEnter}
       />
     );
   }

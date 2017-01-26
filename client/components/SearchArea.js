@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default ({value, updateSearchTerm, onSubmitForm}) => (
+export default ({value, updateSearchTerm, onSubmitForm, onPressEnter}) => (
   <div className="search">
-    <input className="search-input" onChange={updateSearchTerm}
+    <input onKeyPress={onPressEnter} className="search-input" onChange={updateSearchTerm}
            placeholder="WHERE YOU AT?" value={value}/>
     <button onClick={onSubmitForm}>GO</button>
   </div>
