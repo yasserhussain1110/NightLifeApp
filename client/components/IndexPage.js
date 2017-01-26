@@ -4,11 +4,13 @@ import Search from './Search';
 import ResultArea from './ResultArea';
 import SearchSpinner from './SearchSpinner';
 
-export default ({bars, searching}) => (
+export default ({bars, searching, goerButtonClick}) => (
   <div id="#app">
     <Header/>
     <Search/>
     {searching ? <SearchSpinner /> : ""}
-    <ResultArea bars={bars}/>
+    <ResultArea
+      goerButtonClick={goerButtonClick}
+      bars={bars}/>
   </div>
 );

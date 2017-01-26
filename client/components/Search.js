@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as lastSearchedLocationActions from '../actions/gotLastSearchedLocationAction';
 import * as barActions from '../actions/barsAction';
 import * as searchActions from '../actions/searchStatusAction';
-import {postToApi} from '../ajax/makeRequest';
+import {asyncPost} from '../serverInteraction/makeServerRequest';
 
 class Search extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Search extends Component {
 
   getLastSearchedLocation() {
     var _this = this;
-    postToApi('/lastSearchedLocation', {},
+    asyncPost('/lastSearchedLocation', {},
       res => _this.props.actions.gotLastSearchedLocation(res.location),
       res => console.log(res.errors)
     );
@@ -42,7 +42,7 @@ class Search extends Component {
 
     _this.props.actions.searchStarted();
 
-    postToApi('/api/searchBars', {location: this.state.location},
+    asyncPost('/api/searchBars', {location: this.state.location},
       res => {
         _this.props.actions.foundBars(res.bars);
         _this.props.actions.searchEnded();

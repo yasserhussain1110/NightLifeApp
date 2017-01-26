@@ -130,6 +130,8 @@ ul {
   padding: 0px 10px;
   border-radius: 3px;
   font-size: 0.9em;
+  color: white;
+  text-decoration: none;
 }
 
 .number-goers:hover {
@@ -150,4 +152,8 @@ img {
 
 .spinner i {
   margin: 0;
+}
+
+.hidden {
+  display: none;
 }

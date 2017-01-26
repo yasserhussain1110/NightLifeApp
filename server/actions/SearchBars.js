@@ -15,7 +15,10 @@ module.exports = {
       });
       return;
     }
-    processRequest(req.body.location, res);
+
+    req.session.location = req.body.location;
+
+    findBars(req.body.location, res);
   }
 };
 
@@ -103,6 +106,6 @@ function yelpFailureCallBack(res, err) {
 }
 
 
-function processRequest(location, res) {
+function findBars(location, res) {
   requestYelp(location, yelpSuccessCallBack.bind(null, res), yelpFailureCallBack.bind(null, res));
 }
