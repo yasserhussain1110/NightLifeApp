@@ -1,14 +1,14 @@
+import IndexPage from './IndexPage';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import FirstPage from './FirstPage';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
-      bars: [],
-      searching: false
+      bars: props.bars,
+      searching: props.searching
     };
   }
 
@@ -21,11 +21,10 @@ class App extends Component {
 
   render() {
     return (
-      <FirstPage
-        searching={this.state.searching}
-        bars={this.state.bars}/>
+      <IndexPage bars={this.state.bars} searching={this.state.searching} />
     );
   }
+
 }
 
 function mapStateToProps(state) {
