@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Search from './Search';
-import ResultArea from './ResultArea';
+import BarList from './BarList';
 import SearchSpinner from './SearchSpinner';
 
 export default ({bars, searching, goerButtonClick}) => (
@@ -9,7 +9,7 @@ export default ({bars, searching, goerButtonClick}) => (
     <Header/>
     <Search/>
     {searching ? <SearchSpinner /> : ""}
-    <ResultArea
+    <BarList
       goerButtonClick={goerButtonClick}
       bars={bars}/>
   </div>

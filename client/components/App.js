@@ -2,6 +2,8 @@ import IndexPage from './IndexPage';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {asyncPost, asyncGet} from '../serverInteraction/makeServerRequest';
+import {bindActionCreators} from 'redux';
+import * as indicatedGoingAction from '../actions/indicatedGoingAction';
 
 class App extends Component {
   constructor(props, context) {
@@ -24,7 +26,7 @@ class App extends Component {
   indicateGoing(barIndex) {
     let bar = this.state.bars[barIndex];
     asyncPost('/api/indicateGoing', {barId: bar.id},
-      res => console.log(res),
+      res => this.props.actions.barGoersUpdated(barIndex, res.numberOfGoers),
       res => console.log(res)
     );
   }
@@ -71,4 +73,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(indicatedGoingAction, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

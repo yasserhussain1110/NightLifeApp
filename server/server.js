@@ -46,10 +46,9 @@ app.post('/lastSearchedLocation', function (req, res) {
 
 app.get('/isLoggedIn', function (req, res) {
   res.json({
-    loggedIn: !!req.session.passport.user
+    loggedIn: req.session.passport && req.session.passport.user
   });
 });
-
 
 app.post('/api/searchBars', SearchBars.post);
 

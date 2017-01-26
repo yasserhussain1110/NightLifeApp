@@ -61,7 +61,7 @@ function Responder(db, res, totalBars) {
 
 function yelpGaveNewBar(responder, barsCollection, yelpBar) {
   var bar = extractRelevantInfoFromBar(yelpBar);
-  bar.goers = [];
+  bar.numberOfGoers = 0;
   barsCollection.insert({id: bar.id, goers: []}, function (err, data) {
     if (!err) {
       responder.success(bar);
@@ -77,7 +77,7 @@ function yelpGaveNewBar(responder, barsCollection, yelpBar) {
 
 function yelpGaveOldBar(responder, yelpBar, dbBarInfo) {
   var bar = extractRelevantInfoFromBar(yelpBar);
-  bar.goers = dbBarInfo.goers;
+  bar.numberOfGoers = dbBarInfo.goers.length;
   responder.success(bar);
 }
 

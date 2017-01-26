@@ -7,7 +7,7 @@ const ResultArea = ({bars, goerButtonClick}) => {
         <img src={bar.image_url}/>
         <div className="bar-info">
           <a className="bar-name" href={bar.url}>{bar.name}</a>
-          <a className="number-goers" onClick={goerButtonClick.bind(null, id)}>0 GOING</a>
+          <a className="number-goers" onClick={goerButtonClick.bind(null, id)}>{bar.numberOfGoers} GOING</a>
           <p className="snippet"><i>"{bar.snippet_text}"</i></p>
         </div>
       </li>)}
