@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 
 if (process.env.NODE_ENV === "production") {
+  console.log("Running In Production");
   app.use(express.static('build'));
 } else {
+  console.log("Running In Development");
   require('dotenv').config();
   require('../tools/DevSetup').setupDev(app);
 }
