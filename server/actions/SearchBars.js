@@ -10,7 +10,7 @@ module.exports = {
 
     if (validationErrors.length !== 0) {
       console.log(validationErrors);
-      res.status(400).end({
+      res.status(400).json({
         errors: validationErrors
       });
       return;

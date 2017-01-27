@@ -51,7 +51,10 @@ class Search extends Component {
         _this.props.actions.foundBars(res.bars);
         _this.props.actions.searchEnded();
       },
-      res => console.log(res.errors)
+      res => {
+        console.log(res.errors);
+        _this.props.actions.searchEnded();
+      }
     );
   }
 

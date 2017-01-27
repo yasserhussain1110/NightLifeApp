@@ -13,6 +13,9 @@
     "fcc",
     "webpack",
     "react",
+    "redux",
+    "passport-js",
+    "twitter",
     "express",
     "mongo",
     "node"
