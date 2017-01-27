@@ -6,7 +6,8 @@
   "scripts": {
     "_comment": "Run `npm run [command]` to use the following commands",
     "build": "webpack",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "prestart": "npm run build"
   },
   "keywords": [
     "sass",
