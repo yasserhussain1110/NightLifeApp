@@ -14,7 +14,7 @@ module.exports = {
       return;
     }
 
-    if (!req.session.passport.user) {
+    if (!req.session.passport || !req.session.passport.user) {
       req.session.barId = req.body.barId;
       res.status(400).json({
         errors: ["Not Logged In"]
