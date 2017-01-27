@@ -1,11 +1,13 @@
 // Request API access: http://www.yelp.com/developers/getting_started/api_access
 var Yelp = require('yelp');
 
+let {YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, YELP_TOKEN, YELP_TOKEN_SECRET} = process.env;
+
 var yelp = new Yelp({
-  consumer_key: 'uujnzoPtSBi2dvAnPe_TrQ',
-  consumer_secret: 'dQ9eKSQWuMw_56hc6rMqfNzwGw0',
-  token: 'A1ZnJ16JozmwX0_Fg2DRg9I2fdGv1gR-',
-  token_secret: 'qvGmbeADlTMmiuevP86I6mWp5to',
+  consumer_key: YELP_CONSUMER_KEY,
+  consumer_secret: YELP_CONSUMER_SECRET,
+  token: YELP_TOKEN,
+  token_secret: YELP_TOKEN_SECRET,
 });
 
 function requestYelp(location, success, failure) {
