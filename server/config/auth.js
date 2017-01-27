@@ -1,11 +1,11 @@
 // expose our config directly to our application using module.exports
 
+let {TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_CALLBACK_URL} = process.env;
+
 module.exports = {
   'twitterAuth': {
-    'consumerKey': 'jqtCewu5Ys03Nq8jB8M8ZGrfb',
-    'consumerSecret': 'lJAhyC3GxL61gn4Yd4eZt7eMJ50Qt0SZ97Xw2UZE4pqTX6CVLS',
-    'callbackURL':  process.env.NODE_ENV === "production" ?
-      'https://yasser-nightlife-app.herokuapp.com/auth/twitter/callback' :
-      'http://localhost:8080/auth/twitter/callback'
+    'consumerKey': TWITTER_CONSUMER_KEY,
+    'consumerSecret': TWITTER_CONSUMER_SECRET,
+    'callbackURL':  TWITTER_CALLBACK_URL
   }
 };
