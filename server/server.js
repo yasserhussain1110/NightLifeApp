@@ -13,13 +13,22 @@ if (process.env.NODE_ENV === "production") {
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const passportAuth = require('./config/passportAuth');
-passportAuth(passport);
+const session = require('express-session');
+const LokiStore = require('connect-loki')(session);
 
 const SearchBars = require('./actions/SearchBars');
 const IndicateGoing = require('./actions/IndicateGoing');
 
-app.use(require('express-session')({ secret: 'abracadabra', resave: true, saveUninitialized: true }));
+app.use(session({
+  secret: 'abracadabra',
+  resave: true,
+  saveUninitialized: true,
+  store: new LokiStore({
+    autosave: false
+  })
+}));
 
+passportAuth(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
