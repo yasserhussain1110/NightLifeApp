@@ -7,7 +7,9 @@
     "_comment": "Run `npm run [command]` to use the following commands",
     "build": "webpack",
     "start": "node server/server.js",
-    "prestart": "npm run build"
+    "prestart": "per-env",
+    "prestart:production": "npm run build",
+    "prestart:development": "echo 'Skipping Build'"
   },
   "keywords": [
     "sass",
@@ -48,6 +50,7 @@
     "mongodb": "^2.2.22",
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.4",
+    "per-env": "^1.0.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^5.0.2",
