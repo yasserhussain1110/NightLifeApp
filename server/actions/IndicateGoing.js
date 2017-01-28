@@ -14,14 +14,13 @@ module.exports = {
       return;
     }
 
-    if (!req.session.passport || !req.session.passport.user) {
-      req.session.barId = req.body.barId;
+    if (!req.user) {
       res.status(400).json({
         errors: ["Not Logged In"]
       });
       return;
     }
-    indicateGoing(res, req.body.barId, req.session.passport.user);
+    indicateGoing(res, req.body.barId, req.user.id);
   }
 };
 
