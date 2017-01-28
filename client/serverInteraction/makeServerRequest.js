@@ -23,7 +23,6 @@ export const asyncGet = (url, successCallback, failureCallBack) => {
   request
     .get(url)
     .end(function (err, res) {
-
       if (err) {
         if (res) {
           failureCallBack(res.body);

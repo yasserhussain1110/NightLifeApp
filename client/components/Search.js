@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as lastSearchedLocationActions from '../actions/gotLastSearchedLocationAction';
 import * as barActions from '../actions/barsAction';
 import * as searchActions from '../actions/searchStatusAction';
-import {asyncPost} from '../serverInteraction/makeServerRequest';
+import {asyncPost, asyncGet} from '../serverInteraction/makeServerRequest';
 
 class Search extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class Search extends Component {
 
   getLastSearchedLocation() {
     var _this = this;
-    asyncPost('/lastSearchedLocation', {},
+    asyncGet('/lastSearchedLocation',
       res => {
         _this.props.actions.gotLastSearchedLocation(res.location);
         _this.onSubmitForm();
